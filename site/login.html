@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <style>
+        body {
+            background: url("img/bola.jpg") no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<body class="fadeIn">
+
+    <nav class="menu">
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </nav>
+
+        <div class="div2">
+
+        <form class="formulario">
+            <div>
+                
+                <input type="text" id="nome" placeholder="Login:"/>
+            </div>
+            <div>
+                <input type="text" id="email" placeholder="Senha:"/>
+            </div>
+            <button type="button" onclick="cadastro()">Entrar</button>
+        </form>
+    </div>
+
+</body>
+</html>
+<script>
+
+    function cadastro() {
+
+        if (Login.value == email.value) {
+            alert ('ll')
+        }
+
+        else {
+            alert('Login Inválido')
+        }
+    }
+
+</script>

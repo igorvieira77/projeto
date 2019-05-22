@@ -1,0 +1,107 @@
+body{
+margin: 0%;
+}
+
+.fadeIn {
+    -webkit-animation: fadeIn 3s ease-in-out;
+    -moz-animation: fadeIn 3s ease-in-out;
+    -o-animation: fadeIn 3s ease-in-out;
+    animation: fadeIn 3s ease-in-out;
+    }
+
+.menu{
+height: 45px; margin-top: 0%;
+background-color: red
+    }
+.menu ul li{
+    display: inline;
+    padding-right: 1em;
+}
+
+.menu ul li a{
+    text-decoration:none;
+    font-size: 30px;
+    margin-left: 25px;
+    padding:1em;
+    color: black;
+    }
+
+.menu ul {
+    text-align: right;
+    padding-right: 20px;
+    padding-top: 10px;
+    margin: 0%;
+    box-shadow:0 0 2em white;
+    }
+.imagem {
+width: 100%;
+height: 100vh;
+display: flex;
+}
+
+.divimg {
+width: 100%;
+height: 100vh;
+background-attachment: fixed;
+border-radius:40px;
+}
+
+.historia {
+    width: 1000px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.808);
+    padding: 2em;
+    margin-top: 10%;
+    font-weight:bold;
+  font-family: "Segoe UI","Arial","Times New Roman";
+  
+}
+
+
+.formulario {
+    margin: auto; 
+    width: 15em;
+}
+
+.div2 {
+    width: 400px;
+    margin: auto;
+    background-color:rgba(0, 0, 0, 0.842);
+    padding: 2em;
+    margin-top: 15%;
+    font-weight:bold;
+  font-family: "Segoe UI","Arial","Times New Roman";
+  border-style:dashed;
+    }
+
+input[type=text]{
+    width: 100%;
+    height: 100%;
+    }
+
+button[type=button]{
+    padding: 4px 11px;
+
+border: 1px solid black;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-radius: 8px;
+
+
+font-family:"Segoe UI";
+font-weight: bold;
+color: #fff;
+text-shadow: 0 1px 0 #666;
+
+box-shadow: inset 0 1px 1px #fff, 0 2px 3px,green;
+cursor:pointer;
+position: relative;
+
+
+background-color: red;
+    color:white;
+    border-style: border-box;
+    border:2px solid whith; width: 100%; height: 30px;border-top-color: rgb(4, 7, 7);
+    border-radius: 20px;
+
+}
