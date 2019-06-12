@@ -79,7 +79,7 @@ input[type=text]{
     height: 100%;
     }
 
-button[type=button]{
+button[type=button],[type=submit]{
     padding: 4px 11px;
 
 border: 1px solid black;

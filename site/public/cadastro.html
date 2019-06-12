@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro</title>
+    <title>Curiosidades da Bola</title>
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <style>
         body {
@@ -30,16 +30,16 @@
     
 
     <div class="div2">
-        <form class="formulario">
+        <form class="formulario" id="form_cadastro" onsubmit="return cadastrar()">
 
             <label for="nome"></label>
         
-            <input type="text" id="Nome" placeholder="Nome completo:"/>
-            <input type="text" id="Email" placeholder="E-mail:"/>
-            <input type="password" id="Senha" placeholder="Senha"/>
-            <input type="password" id="Confirmacao" placeholder="Confirmar Senha:"/>
+            <input name="nome" type="text" id="Nome" placeholder="Nome completo:"/>
+            <input name="login" type="text" id="Email" placeholder="E-mail:"/>
+            <input name="senha" type="password" id="Senha" placeholder="Senha"/>
+            <!-- <input type="password" id="Confirmacao" placeholder="Confirmar Senha:"/> -->
 
-            <button type="button" onclick="cadastro()">Cadastrar-se</button>
+            <button id="btn_entrar" type="submit">Cadastrar-se</button>
     </div>
     </form>
 
@@ -49,23 +49,60 @@
 </html>
 <script>
 
-    function cadastro() {
-        if (Nome.value == '' || Email.value == '' || Senha.value == ''
-           || Confirmacao.value == '') {
-            alert('Insira um dado válido!')
-        }
+    // function cadastro() {
+    //     if (Nome.value == '' || Email.value == '' || Senha.value == ''
+    //        || Confirmacao.value == '') {
+    //         alert('Insira um dado válido!')
+    //     }
 
-        else if (Senha.value != Confirmacao.value) {
-            alert('Insira senhas iguais!')
-        }
+    //     else if (Senha.value != Confirmacao.value) {
+    //         alert('Insira senhas iguais!')
+    //     }
 
 
-        else {
-            window.location.href = "login.html"
-        }
+    //     else {
+    //         window.location.href = "login.html"
+    //     }
+
+    // }
+
+
+
+    
+
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                window.location.href='informações.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    // div_erro.innerHTML = resposta;
+                    console.log(resposta)
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
 
     }
 
-
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+    }
 
 </script>

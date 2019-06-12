@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Curiosidades da Bola</title>
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <style>
         body {
@@ -28,15 +28,15 @@
 
         <div class="div2">
 
-        <form class="formulario">
+        <form class="formulario" id="form_login" onsubmit="return entrar()">
             <div>
                 
-                <input type="text" id="nome" placeholder="Login:"/>
+                <input name="login" type="text" id="nome" placeholder="Login:"/>
             </div>
             <div>
-                <input type="password" id="email" placeholder="Senha:"/>
+                <input name="senha" type="password" id="email" placeholder="Senha:"/>
             </div>
-            <button type="button" onclick="cadastro()">Entrar</button>
+            <button id="btn_entrar" type="button" onclick="verificarAutenticacao()">Entrar</button>
         </form>
     </div>
 
@@ -44,15 +44,59 @@
 </html>
 <script>
 
-    function cadastro() {
+    // function cadastro() {
 
-        if (nome.value == '' || email.value == '') {
-            alert ('Login Inválido')
-        }
+    //     if (nome.value == '' || email.value == '') {
+    //         alert ('Login Inválido')
+    //     }
 
-        else {
-            alert('Bem-vindo')
-        }
+    //     else {
+    //         alert('Bem-vindo')
+    //     }
+    // }
+
+    
+
+    verificarAutenticacao();
+
+function verificarAutenticacao() {
+    if (sessionStorage.usuario_bandtec != undefined) {
+        window.location.href = 'informações.html';
     }
+}
+
+function entrar() {
+    aguardar();
+    var formulario = new URLSearchParams(new FormData(form_login));
+    fetch("/usuarios/entrar", {
+        method: "POST",
+        body: formulario
+    }).then(function (response) {
+        
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+
+                sessionStorage.usuario_bandtec = resposta.nome;
+                verificarAutenticacao();
+
+            });
+        } else {
+
+            console.log('Erro de login!');
+            finalizar_aguardar();
+        }
+    });
+
+    return false;
+}
+
+function aguardar() {
+    btn_entrar.disabled = true;
+}
+
+function finalizar_aguardar() {
+    btn_entrar.disabled = false;
+}
 
 </script>
